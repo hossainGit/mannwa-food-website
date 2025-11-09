@@ -143,3 +143,70 @@ img{max-width:100%;display:block}
     margin-top: 1rem;
   }
 }
+
+/* 
+for hero image adjustments on small screens */
+
+/* ---------- Hero carousel ---------- */
+.hero-image {
+  height: min(60vh, 300px); /* fits original 420px visual & scales on small screens */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.hero-carousel {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(.2,.9,.3,1);
+  will-change: transform;
+}
+
+/* each slide occupies full carousel width */
+.hero-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: block;
+}
+
+/* image scaling and look */
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(5,10,5,0.06);
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* optional: small dot indicators (hidden by default) */
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 14px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.hero-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+.hero-dot.is-active { background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+
+/* responsive tweaks */
+@media (max-width: 980px) {
+  .hero-image { height: min(50vh, 360px); }
+}
+@media (max-width: 700px) {
+  .hero-image { height: 38vh; border-radius: 10px; }
+}

@@ -59,7 +59,7 @@
         <h3>${product.name}</h3>
         <p class="muted">${product.subtitle}</p>
         <p>${product.description}</p>
-        <p style="margin-top:12px"><strong>Inquiry:</strong> <a href="mailto:mannwa.trading@gmail.com?subject=Inquiry%20about%20${encodeURIComponent(product.name)}">mannwa.trading@gmail.com</a><br> • <a href="tel:+">+880 17084 80510</a></p>
+        <p style="margin-top:12px"><strong>Inquiry:</strong> <a href="mailto:mannwa.food@gmail.com?subject=Inquiry%20about%20${encodeURIComponent(product.name)}">mannwa.food@gmail.com</a><br> • <a href="tel:+">+880 17084 80510</a></p>
       </div>
     `;
     // focus first focusable element
@@ -104,4 +104,78 @@
   // fill year
   document.getElementById('year').textContent = new Date().getFullYear();
 
+})();
+
+
+/* ---------- Hero carousel JS (append to js/main.js) ---------- */
+(function initHeroCarousel() {
+  const carousel = document.querySelector('.hero-carousel');
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll('.hero-slide'));
+  const total = slides.length;
+  if (total <= 1) return;
+
+  let index = 0;
+  const delay = 3000; // ms between slides
+  let timer = null;
+  let isPaused = false;
+
+  function goTo(i) {
+    index = (i + total) % total;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+  }
+
+  function next() { goTo(index + 1); }
+
+  function start() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(() => { if (!isPaused) next(); }, delay);
+  }
+
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  // pause on hover / focus for accessibility
+  carousel.addEventListener('mouseenter', () => { isPaused = true; });
+  carousel.addEventListener('mouseleave', () => { isPaused = false; });
+  carousel.addEventListener('focusin', () => { isPaused = true; });
+  carousel.addEventListener('focusout', () => { isPaused = false; });
+
+  // optional: create dots (unobtrusive)
+  const dots = document.createElement('div');
+  dots.className = 'hero-dots';
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'hero-dot';
+    d.type = 'button';
+    d.setAttribute('aria-label', `Show slide ${i + 1}`);
+    d.addEventListener('click', () => { goTo(i); });
+    dots.appendChild(d);
+  });
+  // attach dots to the hero-image container
+  const heroImage = carousel.closest('.hero-image');
+  if (heroImage) {
+    heroImage.style.position = 'relative';
+    heroImage.appendChild(dots);
+  }
+
+  function updateDots() {
+    const nodeList = dots.querySelectorAll('.hero-dot');
+    nodeList.forEach((n, i) => n.classList.toggle('is-active', i === index));
+  }
+
+  // init
+  goTo(0);
+  start();
+
+  // visibility handling (stop when tab not visible)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  // be safe on unload
+  window.addEventListener('beforeunload', stop);
 })();
