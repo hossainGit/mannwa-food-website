@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mannwa Food & Agro Products — Bangladesh</title>
+  <meta name="description" content="Mannwa — Farm-grown vegetables, frozen items, bakery goods and brown eggs. Premium farm to table products from Bangladesh." />
+  <link rel="icon" href="assets/images/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <img src="assets/images/logo.png" alt="Mannwa logo" class="logo" />
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Mannwa — Farm-grown. Thoughtfully prepared.</h1>
+          <p class="lead">Premium vegetables, hygienically prepared frozen goods, and fresh bakery treats — straight from our farm to your kitchen in Bangladesh.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#products">View products</a>
+            <a class="btn btn-ghost" href="#contact">Contact us</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/images/hero.jpg" alt="Fresh produce and baked goods" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Pills -->
+    <section class="categories">
+      <div class="container">
+        <div class="category-pills" role="tablist" aria-label="Product categories">
+          <button class="pill active" data-filter="all">All</button>
+          <button class="pill" data-filter="vegetables">Vegetables</button>
+          <button class="pill" data-filter="frozen">Frozen</button>
+          <button class="pill" data-filter="bakery">Bakery</button>
+          <button class="pill" data-filter="eggs">Eggs</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="products">
+      <div class="container">
+        <h2 class="section-title">Our Products</h2>
+        <p class="section-sub">Click a product to view details or make an inquiry.</p>
+
+        <div id="productGrid" class="product-grid" aria-live="polite">
+          <!-- Product cards rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container about-inner">
+        <div class="about-text">
+          <h2>About Mannwa</h2>
+          <p>We are a family-run farm and small-scale food processor based in Bangladesh. Our goal is to provide high-quality produce and prepared foods using hygienic processes and careful handling. We focus on freshness, transparency, and sustainable farming.</p>
+          <ul class="about-list">
+            <li>Farm-grown vegetables</li>
+            <li>Hygienic frozen processing</li>
+            <li>Handmade bakery specialties</li>
+          </ul>
+        </div>
+        <div class="about-images">
+          <img src="assets/images/agriculture_tbs_2.jpg" alt="Farm vegetable" loading="lazy" />
+          <!-- <img src="" alt="Bakery goods" loading="lazy" /> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container contact-inner">
+        <div class="contact-cards">
+          <div class="card contact-card">
+            <h3>Contact</h3>
+            <p>For inquiries and wholesale requests:</p>
+            <p><strong>Phone:</strong> <a href="tel:+8801708480510">+880 17084 80510</a></p>
+            <p><strong>Email:</strong> <a href="mailto:mannwa.trading@gmail.com">mannwa.trading@gmail.com</a></p>
+            <p><strong>Address:</strong> Satenga, Bhaluca, Maymenshing, Bangladesh</p>
+          </div>
+
+          <div class="card inquiry-card">
+            <h3>Quick inquiry</h3>
+            <form id="inquiryForm" action="mailto:mannwa.trading@gmail.com" method="GET" onsubmit="return submitInquiry(event)">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required />
+
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+
+              <button type="submit" class="btn btn-primary">Send inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <small>&copy; <span id="year"></span> Mannwa Food & Agro Products — Bangladesh</small>
+      </div>
+      <div class="footer-right">
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product modal -->
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close product details" data-close>&times;</button>
+      <div class="modal-content">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@import url('variables.css');
+
+/* Base reset / simple normalize */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--color-foreground); background:var(--color-bg); -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid rgba(2,7,0,0.04);position:sticky;top:0;z-index:40}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo{height:44px}
+
+.site-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.site-nav a{color:var(--muted);text-decoration:none;font-weight:600}
+
+.nav-toggle{display:none;background:none;border:0}
+.hamburger{width:22px;height:2px;background:var(--color-foreground);display:block;position:relative}
+.hamburger::after,.hamburger::before{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--color-foreground)}
+.hamburger::before{top:-7px}
+.hamburger::after{top:7px}
+
+/* Hero */
+.hero{padding:56px 0}
+.hero-inner{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+.hero-text h1{font-family:'Playfair Display', Georgia, serif;font-size:40px;margin:0 0 12px;color:var(--color-deep-green)}
+.lead{color:var(--muted);margin:0 0 18px}
+.btn{display:inline-block;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn-primary{background:var(--color-deep-green);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--color-foreground)}
+.hero-image img{border-radius:12px;box-shadow:0 10px 30px rgba(5,10,5,0.06)}
+
+/* Category pills */
+.category-pills{display:flex;gap:12px;padding:16px 0}
+.pill{background:#fff;padding:8px 12px;border-radius:999px;border:1px solid rgba(2,7,0,0.04);cursor:pointer}
+.pill.active{background:var(--color-deep-green);color:#fff}
+
+/* Product grid */
+.section-title{font-size:22px;margin:8px 0}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:18px}
+.product-card{background:#fff;border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(3,8,3,0.04);cursor:pointer;transition:transform .22s ease, box-shadow .22s ease}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(3,8,3,0.06)}
+.product-media{height:180px;overflow:hidden;border-radius:8px}
+.product-media img{width:100%;height:100%;object-fit:cover}
+.card-body{padding-top:10px}
+.meta{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.product-title{font-weight:700;margin:6px 0;font-size:16px}
+.product-sub{font-size:13px;color:var(--muted)}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60}
+.modal[aria-hidden="false"]{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(6,8,6,0.5)}
+.modal-panel{position:relative;background:#fff;border-radius:12px;max-width:900px;width:94%;box-shadow:0 20px 60px rgba(3,9,6,0.2);overflow:hidden}
+.modal-close{position:absolute;right:12px;top:8px;background:none;border:0;font-size:34px;line-height:1;cursor:pointer}
+.modal-content{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:20px}
+.modal-content img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.modal-meta h3{margin:0 0 8px}
+.badge{display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(200,162,75,0.12);color:var(--color-accent);font-weight:700;margin-bottom:10px}
+.inquiry-btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--color-deep-green);color:#fff;text-decoration:none}
+
+/* About & Contact */
+.about-inner{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;padding:48px 0}
+.about-images img{width:100%;border-radius:8px;margin-bottom:12px}
+.contact-inner{padding:40px 0}
+.contact-cards{display:grid;grid-template-columns:1fr 380px;gap:20px}
+.card{background:#fff;padding:18px;border-radius:12px}
+
+/* Footer */
+.site-footer{padding:18px 0;background:transparent}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-inner nav a{margin-left:12px;color:var(--muted);text-decoration:none}
+
+/* Small screens adjustments in responsive.css */
+
+/* Compact Inquiry Card */
+.inquiry-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.inquiry-card h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark, #222);
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+
+.inquiry-card input,
+.inquiry-card textarea {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.inquiry-card input:focus,
+.inquiry-card textarea:focus {
+  border-color: var(--accent, #c9a24b);
+  outline: none;
+  box-shadow: 0 0 0 1.5px rgba(201, 162, 75, 0.15);
+}
+
+.inquiry-card textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 120px;
+}
+
+.inquiry-card button {
+  align-self: center;
+  background-color: var(--accent, #c9a24b);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.inquiry-card button:hover {
+  background-color: #b18a3f;
+}
+
+@media (max-width: 600px) {
+  .inquiry-card {
+    max-width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}
