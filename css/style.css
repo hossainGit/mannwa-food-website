@@ -29,7 +29,7 @@ img{max-width:100%;display:block}
 .lead{color:var(--muted);margin:0 0 18px}
 .btn{display:inline-block;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
 .btn-primary{background:var(--color-deep-green);color:#fff}
-.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--color-foreground)}
+.btn-ghost{background:white;border:1px solid rgba(0,0,0,0.06);color:var(--color-foreground)}
 .hero-image img{border-radius:12px;box-shadow:0 10px 30px rgba(5,10,5,0.06)}
 
 /* Category pills */
